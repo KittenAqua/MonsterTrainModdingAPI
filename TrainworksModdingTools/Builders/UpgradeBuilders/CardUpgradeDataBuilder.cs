@@ -34,15 +34,15 @@ namespace Trainworks.Builders
                 this.upgradeTitle = value;
                 if (this.UpgradeTitleKey == null)
                 {
-                    this.UpgradeTitleKey = this.UpgradeTitleKey + "_CardUpgradeData_UpgradeTitleKey";
+                    this.UpgradeTitleKey = this.upgradeTitle + "_CardUpgradeData_UpgradeTitleKey";
                 }
                 if (this.UpgradeDescriptionKey == null)
                 {
-                    this.UpgradeDescriptionKey = this.UpgradeTitleKey + "_CardUpgradeData_UpgradeDescriptionKey";
+                    this.UpgradeDescriptionKey = this.upgradeTitle + "_CardUpgradeData_UpgradeDescriptionKey";
                 }
                 if (this.UpgradeNotificationKey == null)
                 {
-                    this.UpgradeNotificationKey = this.UpgradeTitleKey + "_CardUpgradeData_UpgradeNotificationKey";
+                    this.UpgradeNotificationKey = this.upgradeTitle + "_CardUpgradeData_UpgradeNotificationKey";
                 }
             }
         }
