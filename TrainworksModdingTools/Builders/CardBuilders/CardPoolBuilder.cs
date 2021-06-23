@@ -61,6 +61,11 @@ namespace Trainworks.Builders
             var cardDataList = (Malee.ReorderableArray<CardData>)AccessTools.Field(typeof(CardPool), "cardDataList").GetValue(cardPool);
             foreach (string cardID in this.CardIDs)
             {
+                if(cardID == null)
+                {
+                    Trainworks.Log(LogLevel.Warning, "Null Card ID in CardPool, Skipping...");
+                    continue;
+                }
                 var card = CustomCardManager.GetCardDataByID(cardID);
                 if (card != null)
                 {

@@ -47,6 +47,10 @@ namespace Trainworks.Managers
         /// <returns>The card data for the given ID</returns>
         public static CardData GetCardDataByID(string cardID)
         {
+            if(cardID == null)
+            {
+                throw new System.Exception("Cannot get CardData from ID of null");
+            }
             // Search for custom card matching ID
             var guid = GUIDGenerator.GenerateDeterministicGUID(cardID);
             if (CustomCardData.ContainsKey(guid))

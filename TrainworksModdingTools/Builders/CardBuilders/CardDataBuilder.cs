@@ -265,11 +265,15 @@ namespace Trainworks.Builders
             }
 
             var allGameData = ProviderManager.SaveManager.GetAllGameData();
-            if (this.LinkedClass == null)
+            if (this.LinkedClass == null && this.ClanID != null)
             {
                 this.LinkedClass = CustomClassManager.GetClassDataByID(this.ClanID);
             }
             CardData cardData = ScriptableObject.CreateInstance<CardData>();
+            if(this.CardID == null)
+            {
+                throw new Exception("CardID is Required.");
+            }
             var guid = GUIDGenerator.GenerateDeterministicGUID(this.CardID);
             AccessTools.Field(typeof(CardData), "id").SetValue(cardData, guid);
             cardData.name = this.CardID;

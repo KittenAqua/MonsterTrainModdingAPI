@@ -136,7 +136,7 @@ namespace Trainworks.Builders
                 this.Effects.Add(builder.Build());
             }
 
-            if (this.LinkedClass == null)
+            if (this.LinkedClass == null && this.ClanID != null)
             {
                 this.LinkedClass = CustomClassManager.GetClassDataByID(this.ClanID);
             }

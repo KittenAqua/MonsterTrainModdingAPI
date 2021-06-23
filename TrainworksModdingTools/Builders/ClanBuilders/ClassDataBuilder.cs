@@ -154,9 +154,14 @@ namespace Trainworks.Builders
         public ClassData Build()
         {
             ClassData classData = ScriptableObject.CreateInstance<ClassData>();
+            if(ClassID == null)
+            {
+                throw new Exception("Class ID is Required");
+            }
+            string GUID = GUIDGenerator.GenerateDeterministicGUID(this.ClassID);
             classData.name = this.ClassID;
 
-            AccessTools.Field(typeof(ClassData), "id").SetValue(classData, GUIDGenerator.GenerateDeterministicGUID(this.ClassID));
+            AccessTools.Field(typeof(ClassData), "id").SetValue(classData, GUID);
             AccessTools.Field(typeof(ClassData), "cardStyle").SetValue(classData, this.CardStyle);
             AccessTools.Field(typeof(ClassData), "classUnlockCondition").SetValue(classData, this.ClassUnlockCondition);
             AccessTools.Field(typeof(ClassData), "classUnlockParam").SetValue(classData, this.ClassUnlockParam);
@@ -192,18 +197,18 @@ namespace Trainworks.Builders
             {
                 Sprite cardFrameSpellSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.CardFrameSpellPath);
                 Sprite cardFrameUnitSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.CardFrameUnitPath);
-                CustomClassManager.CustomClassFrame.Add(GUIDGenerator.GenerateDeterministicGUID(this.ClassID), new List<Sprite>() { cardFrameUnitSprite, cardFrameSpellSprite });
+                CustomClassManager.CustomClassFrame.Add(GUID, new List<Sprite>() { cardFrameUnitSprite, cardFrameSpellSprite });
             }
 
             // Draft Icon
             if (this.DraftIconPath != null)
             {
                 Sprite draftIconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.DraftIconPath);
-                CustomClassManager.CustomClassDraftIcons.Add(GUIDGenerator.GenerateDeterministicGUID(this.ClassID), draftIconSprite);
+                CustomClassManager.CustomClassDraftIcons.Add(GUID, draftIconSprite);
             }
             // Class select character IDs
-            CustomClassManager.CustomClassSelectScreenCharacterIDsMain.Add(GUIDGenerator.GenerateDeterministicGUID(this.ClassID), this.ClassSelectScreenCharacterIDsMain);
-            CustomClassManager.CustomClassSelectScreenCharacterIDsSub.Add(GUIDGenerator.GenerateDeterministicGUID(this.ClassID), this.ClassSelectScreenCharacterIDsSub);
+            CustomClassManager.CustomClassSelectScreenCharacterIDsMain.Add(GUID, this.ClassSelectScreenCharacterIDsMain);
+            CustomClassManager.CustomClassSelectScreenCharacterIDsSub.Add(GUID, this.ClassSelectScreenCharacterIDsSub);
 
 
             return classData;

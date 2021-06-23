@@ -61,6 +61,10 @@ namespace Trainworks.Managers
         /// <returns>The class data for the given ID</returns>
         public static ClassData GetClassDataByID(string classID)
         {
+            if (classID == null)
+            {
+                throw new System.Exception("Cannot get ClassData from ID of null");
+            }
             // Search for custom clan matching ID
             var guid = GUIDGenerator.GenerateDeterministicGUID(classID);
             if (CustomClassData.ContainsKey(guid))

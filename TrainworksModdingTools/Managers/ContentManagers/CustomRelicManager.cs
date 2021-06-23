@@ -48,6 +48,10 @@ namespace Trainworks.Managers
         /// <returns>The relic data for the given ID</returns>
         public static CollectableRelicData GetRelicDataByID(string relicID)
         {
+            if(relicID == null)
+            {
+                throw new Exception("Cannot find RelicData from ID of null"); 
+            }
             // Search for custom relic matching ID
             var guid = GUIDGenerator.GenerateDeterministicGUID(relicID);
             if (CustomRelicData.ContainsKey(guid))

@@ -50,7 +50,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="TrainworksModdingTools">
+    <Reference Include="Trainworks">
       <HintPath>..\TrainworksModdingTools\obj\Debug\netstandard2.0\TrainworksModdingTools.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">

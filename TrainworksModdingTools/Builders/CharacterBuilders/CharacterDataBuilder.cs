@@ -253,7 +253,10 @@ namespace Trainworks.Builders
             {
                 this.RoomModifiers.Add(builder.Build());
             }
-
+            if(CharacterID == null)
+            {
+                throw new Exception("Character ID is Required");
+            }
             var guid = GUIDGenerator.GenerateDeterministicGUID(this.CharacterID);
             AccessTools.Field(typeof(CharacterData), "id").SetValue(characterData, guid);
             AccessTools.Field(typeof(CharacterData), "animationController").SetValue(characterData, this.AnimationController);

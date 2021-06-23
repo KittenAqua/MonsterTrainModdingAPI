@@ -18,7 +18,7 @@ namespace Trainworks.Utilities
         {
             if (key == null)
             {
-                Trainworks.Log(BepInEx.Logging.LogLevel.Warning, "GUIDGenerator cannot generate determinstic GUID for null key");
+                Trainworks.Log(BepInEx.Logging.LogLevel.Warning, "GUIDGenerator cannot generate determinstic GUID for null key. Will Crash.");
                 return key;
             }
 
